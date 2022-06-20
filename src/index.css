@@ -127,6 +127,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+.features-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
 @media (min-width: 920px) {
   .features {
