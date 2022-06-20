@@ -4,21 +4,12 @@ import IconSecurity  from '../assets/icon-security.png'
 import IconMoney  from '../assets/icon-money.png'
 import FeaturesItem from "../component/FeaturesItem";
 import Features from "../component/Features";
+import Hero from "../component/Hero";
 
 function Home(){
     return(
-        <>
-
             <main>
-                <div className="hero">
-                    <section className="hero-content">
-                        <h2 className="sr-only">Promoted Content</h2>
-                        <p className="subtitle">No fees.</p>
-                        <p className="subtitle">No minimum deposit.</p>
-                        <p className="subtitle">High interest rates.</p>
-                        <p className="text">Open a savings account with Argent Bank today!</p>
-                    </section>
-                </div>
+               <Hero/>
                 <Features srTitle="Features">
                     <FeaturesItem picture={IconChat} pictureAlt="Chat Icon">
                         <h3 className="feature-item-title">You are our #1 priority</h3>
@@ -34,7 +25,6 @@ function Home(){
                     </FeaturesItem>
                 </Features>
             </main>
-            </>
     )
 }
 export default Home
