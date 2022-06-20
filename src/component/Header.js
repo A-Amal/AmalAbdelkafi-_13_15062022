@@ -1,4 +1,5 @@
 import argentBankLogo  from '../assets/argentBankLogo.png'
+import Icon from './Icon'
 
 
 function Header() {
@@ -13,7 +14,8 @@ function Header() {
 
                                    <div>
                                        <a className="main-nav-item">
-                                           Sign In
+                                       <Icon name="user-circle" />
+                                           <span style={{marginLeft:5}}> Sign In </span>
                                        </a>
                                    </div>
                                </nav>
