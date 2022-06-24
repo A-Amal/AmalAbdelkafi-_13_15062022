@@ -4,8 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
-import {store} from "./store";
+import {store} from "./redux/store";
+import axios from "axios";
+/**
+ * Axios config
+ */
+axios.defaults.baseURL = 'http://localhost:3001/api/v1';
+axios.defaults.headers.common['accept'] = `application/json`
+axios.defaults.headers.common['Content-Type'] = `application/json`
 
+/**
+ * React render
+ */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
