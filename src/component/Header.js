@@ -1,27 +1,31 @@
-import  { useState } from 'react';
+
 import { Link, NavLink } from 'react-router-dom'
 import argentBankLogo  from '../assets/argentBankLogo.png'
 import Icon from './Icon'
+import {useDispatch, useSelector} from "react-redux";
+import {authSelector} from "../redux/AuthSelectors";
+import {authLogout} from "../redux/AuthActions";
 
 
 function Header() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const {isAuthenticated, user} = useSelector(authSelector)
+    const dispatch = useDispatch()
     return (
            <nav className="header-nav">
-                <NavLink to="/" className="header-nav-logo">
+                <NavLink to="/"  className="header-nav-logo">
                    <img className="main-nav-logo-image" src={argentBankLogo} alt="Argent Bank Logo" />
                    <h1 className="sr-only">Argent Bank</h1>
                 </NavLink>
 
               <ul className="header-nav-menu">
                    {isAuthenticated && (<>
-                       <NavLink to="/dashboard">
+                       <NavLink className="nav-link" to="/dashboard">
                            <li className="header-nav-menu-item">
                                <Icon name="user-circle" />
-                               <p>username</p>
+                               {user.firstName}
                            </li>
                        </NavLink>
-                       <NavLink to="/">
+                       <NavLink to="/" className="nav-link" onClick={() => dispatch(authLogout())}>
                            <li className="header-nav-menu-item">
                                <Icon name="sign-out" />
                                Sign Out
@@ -29,7 +33,7 @@ function Header() {
                        </NavLink>
                    </>)}
                    {!isAuthenticated && (<>
-                       <NavLink to="/login">
+                       <NavLink className="nav-link" to="/login">
                            <li className="header-nav-menu-item">
                                <Icon name="user-circle" />
                                Sign In

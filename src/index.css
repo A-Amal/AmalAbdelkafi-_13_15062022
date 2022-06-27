@@ -333,7 +333,7 @@ body {
 .header-nav-menu-item {
    display: flex; align-items: center;
    gap: 0.375rem;
-   padding: 0.25rem;
+   padding: 0.5rem;
    font-weight: bold;
    color: black;}
 .header-nav-menu-item:hover {
@@ -345,3 +345,28 @@ body {
 .header:hover {
    border-bottom: 1px solid black;
  }
+.dashboard-form{
+  display: flex;
+  justify-content: center;
+}
+.dashboard-form-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+.dashboard-form-wrapper:first-child {
+  align-items: flex-end;
+  margin-right: 5px;
+}
+.dashboard-form-wrapper:last-child {
+  align-items: flex-start;
+}
+.dashboard-form-wrapper .btn {
+  padding: 0.5rem 2rem;
+}
+.nav-link{
+  text-decoration: none;
+}
+.nav-link:focus{
+  text-decoration: none;
+}

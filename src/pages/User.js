@@ -5,22 +5,70 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {authSelector} from "../redux/AuthSelectors";
+import {authUpdateProfile} from "../redux/AuthActions";
 
 export default function User() {
 
-
+    const [ updateProfile, setUpdateProfile ] = useState(false)
+    const [ updateProfileForm, setUpdateProfileForm ] = useState({firstName: '', lastName: ''})
     const { user } = useSelector(authSelector)
+    const dispatch = useDispatch()
 
+    const saveUpdateProfile = (e) => {
+        e.preventDefault()
+        dispatch(authUpdateProfile(updateProfileForm))
+        setUpdateProfile(false)
+    }
+    const cancelUpdateProfile = () => setUpdateProfile(false)
+
+    const showUpdateProfile = () => {
+        setUpdateProfileForm({
+            firstName: user.firstName,
+            lastName: user.lastName,
+        })
+        setUpdateProfile(true)
+    }
 
     return (
         <main className="main bg-dark">
+            {!updateProfile ? (
                 <div className="header">
                     <h1>Welcome back</h1>
                     <h2>{user.firstName} {user.lastName}!</h2>
                     <button
-                        className="edit-button"
+                        className="btn btn-primary"
+                        onClick={showUpdateProfile}
                     >Edit Name</button>
                 </div>
+            ) : (
+                <div className="header">
+                    <h1>Edit your profile information</h1>
+                    <form onSubmit={saveUpdateProfile} className="dashboard-form">
+                        <div className="dashboard-form-wrapper">
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={updateProfileForm.firstName}
+                                onChange={(e) => setUpdateProfileForm({...updateProfileForm, firstName: e.target.value})}
+                            />
+                            <button type="submit" className="btn btn-primary">Save</button>
+                        </div>
+                        <div className="dashboard-form-wrapper">
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={updateProfileForm.lastName}
+                                onChange={(e) => setUpdateProfileForm({...updateProfileForm, lastName: e.target.value})}
+                            />
+                            <button
+                                className="btn"
+                                type="button"
+                                onClick={cancelUpdateProfile}
+                            >Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            )}
             {/* Placeholder data */}
             <h2 className="sr-only">Accounts</h2>
             <div className="dashboard-grid">

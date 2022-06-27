@@ -29,6 +29,7 @@
     color: black;
     font-size: 1.2rem;
     text-align: left;
+    margin-bottom: 5px;
 }
 .form-check {
     display: flex; justify-content: stretch; align-items: center;
@@ -45,10 +46,10 @@
 .btn {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
-    background-color: white;
+    background-color: #00bc77;
     border: 1px solid #00bc77;
     text-align: center;
-    color: #00bc77;
+    color: white;
     font-weight: bold;
     font-size: 1rem;
     transition: all .3s linear;
@@ -66,7 +67,7 @@
     border: 1px solid #00bc77;
     color: white;
 }
-.btn:hover:not([disabled]) {
+.btn-primary:hover:not([disabled]) {
     background-color: #00bc77;
     border: 1px solid #00bc77;
     color: white;
