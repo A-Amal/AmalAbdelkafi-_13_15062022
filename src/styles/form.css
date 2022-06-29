@@ -31,6 +31,13 @@
     text-align: left;
     margin-bottom: 5px;
 }
+.form-error{
+    color:darkred;
+    font-size: 14px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-align: left;
+}
 .form-check {
     display: flex; justify-content: stretch; align-items: center;
     gap: 1rem;

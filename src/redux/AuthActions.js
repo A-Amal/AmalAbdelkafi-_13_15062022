@@ -59,6 +59,7 @@ export const authLogin = userCompt => async dispatch => {
         dispatch({type:AUTH_SET_USER, payload:{user}})
         console.log(user)
     }catch (error){
+        dispatch({ type: AUTH_LOADING, payload: false })// End request
         console.log(error)
     }
 }
