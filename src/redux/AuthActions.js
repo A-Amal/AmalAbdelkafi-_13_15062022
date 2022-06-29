@@ -9,6 +9,8 @@ export const AUTH_LOGIN = 'AUTH_LOGIN'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT'
 export const AUTH_SET_USER = 'AUTH_SET_USER'
 export const AUTH_UPDATE_USER = 'AUTH_UPDATE_USER'
+export const AUTH_ERROR = 'AUTH_ERROR'
+
 
 /**
  * Set authorization token in axios header
@@ -60,6 +62,7 @@ export const authLogin = userCompt => async dispatch => {
         console.log(user)
     }catch (error){
         dispatch({ type: AUTH_LOADING, payload: false })// End request
+        dispatch({type:AUTH_ERROR, payload:true})
         console.log(error)
     }
 }

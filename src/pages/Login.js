@@ -15,8 +15,7 @@ export default function Login() {
         password: '',
         remember: false,
     })
-    const [error, setError] = useState(false)
-    const {isAuthenticated, loading} = useSelector(authSelector)
+    const {isAuthenticated, loading, errorAuth} = useSelector(authSelector)
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
@@ -30,9 +29,8 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(authLogin(userCompt))
-        setError(!error)
-        console.log(e)
     }
+    console.log(errorAuth)
     return (
         <main className="main bg-dark">
             <section className="sign-in-content login">
@@ -54,7 +52,7 @@ export default function Login() {
                                 disabled={loading && 'disabled'}
                                 onChange={e => setUserCompt({...userCompt, email: e.target.value})}
                             />
-                            {error&& <p className={"form-error"}>Email doit être valide</p>}
+                            {errorAuth && <p className={"form-error"}>Email doit être valide</p>}
                         </div>
                         <div className="form-wrapper">
                             <label htmlFor="password" className="form-label">Password</label>
@@ -69,7 +67,7 @@ export default function Login() {
                                     setUserCompt({...userCompt, ...{password }})
                                 }}
                             />
-                            {error&& <p className={"form-error"}> mot de passe doit contenir au moins 3 caractères</p>}
+                            {errorAuth && <p className={"form-error"}> mot de passe doit contenir au moins 3 caractères</p>}
                         </div>
                         <div className="form-check">
                             <input

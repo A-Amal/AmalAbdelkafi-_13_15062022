@@ -1,10 +1,11 @@
-import {AUTH_LOADING, AUTH_LOGIN, AUTH_LOGOUT, AUTH_SET_USER, AUTH_UPDATE_USER} from "./AuthActions";
+import {AUTH_LOADING, AUTH_LOGIN, AUTH_LOGOUT, AUTH_SET_USER, AUTH_UPDATE_USER, AUTH_ERROR} from "./AuthActions";
 
 const authState = {
     isAuthenticated: false,
     user: {},
     token: '',
     loading: false,
+    errorAuth: false
 }
 
 /**
@@ -43,6 +44,12 @@ const authReducer = (state = authState, action) =>{
                 ...state,
                 loading: action.payload,
             }
+        case AUTH_ERROR:
+            return {
+                ...state,
+                errorAuth: action.payload
+            }
+
         // Update profile information
         case AUTH_UPDATE_USER:
             return {
