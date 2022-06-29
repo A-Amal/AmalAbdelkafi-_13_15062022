@@ -128,7 +128,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-      responces:
+      responses:
         '200':
           description: Accounts retrieved successully
           schema:
