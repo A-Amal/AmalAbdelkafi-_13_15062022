@@ -57,13 +57,11 @@ export const authLogin = userCompt => async dispatch => {
         dispatch({type:AUTH_LOGIN, payload:{token}})
         const responseProfile = await axios.post('/user/profile')
         const user = responseProfile.data.body
-        console.log(user)
         dispatch({type:AUTH_SET_USER, payload:{user}})
-        console.log(user)
     }catch (error){
         dispatch({ type: AUTH_LOADING, payload: false })// End request
         dispatch({type:AUTH_ERROR, payload:true})
-        console.log(error)
+
     }
 }
 /**

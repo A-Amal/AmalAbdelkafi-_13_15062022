@@ -17,7 +17,6 @@ function App() {
     useEffect(() => {// Reconnect user
         if (token) dispatch(authAutoLogin(token))
     }, [])
-    console.log(isAuthenticated)
     return (
     <div >
         <Router>

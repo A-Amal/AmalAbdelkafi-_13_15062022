@@ -30,7 +30,6 @@ export default function Login() {
         e.preventDefault()
         dispatch(authLogin(userCompt))
     }
-    console.log(errorAuth)
     return (
         <main className="main bg-dark">
             <section className="sign-in-content login">
